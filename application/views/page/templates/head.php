@@ -111,6 +111,6 @@
             <h1><?= $settings['text_sambutan']; ?></h1>
             <h2><?= $settings['desc_sambutan'] ?></h2>
             <!-- <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a> -->
-                <a class=" animate__animated animate__headShake animate__infinite	infinite tombolmariberbelanja" href="<?= base_url('landingpage/allitem'); ?>">Mari Berbelanja Dengan Fitur AR  <i class="fa-solid fa-vr-cardboard"></i></a>
+                <a href="<?= base_url('landingpage/allitem'); ?>" class=" animate__animated animate__headShake animate__infinite	infinite tombolmariberbelanja" href="<?= base_url('landingpage/allitem'); ?>">Mari Berbelanja Dengan Fitur AR  <i class="fa-solid fa-vr-cardboard"></i></a>
         </div>
     </section><!-- End Hero -->
