@@ -41,7 +41,6 @@
         }
 
         .breadcrumbs ol li:not(:last-child):after {
-            content: "/";
             margin: 0 10px;
         }
 
@@ -101,6 +100,47 @@
         .detaillihat a:hover {
             background-color: #0056b3;
         }
+
+        .search-bar {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .search-bar input {
+            width: 50%;
+            max-width: 500px;
+            display: inline-block;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .no-products {
+            text-align: center;
+            color: red;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .back-button {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button button {
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -117,23 +157,30 @@
         </div>
     </section><br><br>
     <!-- End Breadcrumbs Section -->
+
     <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-                <h2>Produk Yang Kami Sediakan</h2>
-                <p>Dapatkan pengalaman berbelanja dengan teknologi AR yang kami sediakan</p>
-            </div>
+        <h2>Produk Yang Kami Sediakan</h2>
+        <p>Dapatkan pengalaman berbelanja dengan teknologi AR yang kami sediakan</p>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Cari produk..." class="form-control">
+    </div>
+
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <div class="container">
-        <?php
-// Fungsi untuk mengurutkan array berdasarkan jumlah terjual (terjual dalam descending order)
-usort($dokumentasi, function($a, $b) {
-    return $b->terjual - $a->terjual;
-});
-?>
+            <?php
+            // Fungsi untuk mengurutkan array berdasarkan jumlah terjual (terjual dalam descending order)
+            usort($dokumentasi, function($a, $b) {
+                return $b->terjual - $a->terjual;
+            });
+            ?>
 
-            <div class="row">
+            <div class="row" id="productContainer">
                 <?php foreach ($dokumentasi as $row): ?>
-                    <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="col-lg-4 col-md-6 mb-4 product-item" data-product-name="<?= strtolower($row->nama_produk) ?>">
                         <div class="portfolio-item">
                             <div class="portfolio-wrap">
                                 <img src="<?= base_url('vendor/dokumentasi/') . $row->thumbnail ?>" class="img-fluid" alt="<?= $row->nama_produk ?>">
@@ -152,11 +199,58 @@ usort($dokumentasi, function($a, $b) {
                 <?php endforeach; ?>
             </div>
 
+            <div class="no-products" id="noProductsMessage">Produk tidak tersedia</div>
+
+            <div class="back-button" id="backButton">
+                <button onclick="resetSearch()">Kembali</button>
+            </div>
         </div>
     </section>
     <!-- End Portfolio Section -->
 
 </main>
+
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const productContainer = document.getElementById('productContainer');
+    const noProductsMessage = document.getElementById('noProductsMessage');
+    const backButton = document.getElementById('backButton');
+    const productItems = document.querySelectorAll('.product-item');
+
+    noProductsMessage.style.display = 'none';
+
+    searchInput.addEventListener('input', function() {
+        const searchTerm = searchInput.value.toLowerCase();
+        let found = false;
+
+        productItems.forEach(function(item) {
+            const productName = item.getAttribute('data-product-name');
+            if (productName.includes(searchTerm)) {
+                item.style.display = 'block';
+                found = true;
+            } else {
+                item.style.display = 'none';
+            }
+        });
+
+        if (found) {
+            noProductsMessage.style.display = 'none';
+            backButton.style.display = 'block';
+        } else {
+            noProductsMessage.style.display = 'block';
+            backButton.style.display = 'block';
+        }
+    });
+
+    function resetSearch() {
+        searchInput.value = '';
+        productItems.forEach(function(item) {
+            item.style.display = 'block';
+        });
+        noProductsMessage.style.display = 'none';
+        backButton.style.display = 'none';
+    }
+</script>
 
 </body>
 </html>
