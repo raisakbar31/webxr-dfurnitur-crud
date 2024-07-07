@@ -75,7 +75,7 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                    <li><a class="nav-link scrollto active" href="#hero">Dashboard </a></li>
                     <li><a class="nav-link scrollto" href="#tentang">Tentang</a></li>
                     <li><a class="nav-link scrollto" href="#dokumentasi">produk</a></li>
                     <li><a class="nav-link scrollto" href="#katapengunjung">Kata Pengunjung</a></li>
@@ -97,7 +97,7 @@
                             <li><a href="#">Drop Down 4</a></li>
                         </ul>
                     </li> -->
-                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">kontak</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
