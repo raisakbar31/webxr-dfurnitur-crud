@@ -176,7 +176,7 @@ usort($dokumentasi, function ($a, $b) {
             <?php endif; ?>
                     <div class="detaillihat">
                         <a href="<?= base_url('landingpage/dokumentasi/') . $row->id_dokumentasi ?>#portfolio-details" title="More Details"><i class="fa-solid fa-arrow-up-right-from-square"></i> Detail</a>
-                        <a href="<?= base_url('vendor/dokumentasi/') . $row->thumbnail ?>" data-gallery="portfolioGallery" class="portfolio-lightbox" title="<?= $row->nama_pengunjung ?>"><i class="fa-regular fa-eye"></i> Lihat</a>
+                        <a href="<?= base_url('vendor/dokumentasi/') . $row->thumbnail ?>" data-gallery="portfolioGallery" class="portfolio-lightbox" title="<?= $row->nama_produk ?>"><i class="fa-regular fa-eye"></i> Lihat</a>
                     </div>
                 </div>
             </div>

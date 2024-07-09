@@ -1,35 +1,16 @@
 <!-- ar=============================== -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="./css/shop-homepage.css" rel="stylesheet">
 <!-- ============================ -->
-<script src="../../libs/fas.js"></script>
+<script src="<?= base_url('vendor/assets/') ?>fas.js"></script>
+<script src="<?= base_url('vendor/assets/') ?>app.js"></script>
     <script type="module">
-        import { App } from './app.js';
+        import { App } from '../../vendor/assets/app.js';
 
         document.addEventListener("DOMContentLoaded", function(){
             const app = new App();
             window.app = app;
         });
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <script src="https://kit.fontawesome.com/bbaa37717d.js" crossorigin="anonymous"></script>
 
@@ -105,7 +86,7 @@ $phone_number = $settings->phone;
                         <h2><strong>Fitur AR <i class="fa-solid fa-vr-cardboard"></i></strong></h2><br>
                        
                         <div class="card-footer">
-                        <button class="ar-button" onclick="window.app.showChair(<?= $dokumentasi['id'] ?>);">Lihat AR <i class="fas fa-camera"></i></button>
+                        <button class="ar-button" onclick="window.app.showChair('<?= $dokumentasi['file_d'] ?>');">Lihat AR <i class="fas fa-camera"></i></button>
 
                     </div>
 
@@ -166,12 +147,12 @@ $phone_number = $settings->phone;
 </script>
 
 
-                    </div>
-                </div>
+</div>
+</div>
 
-            </div>
+</div>
 
-        </div>
-    </section><!-- End Portfolio Details Section -->
+</div>
+</section><!-- End Portfolio Details Section -->
 
 </main><!-- End #main -->

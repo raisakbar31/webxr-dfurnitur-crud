@@ -54,16 +54,6 @@
         }
 
         /* Produk Terbaru Section */
-        .produk-terbaru .container{
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: -40px;
-
-        }
-        .produk-terbaru .container h2{
-
-
-        }
         .produk-terbaru{
             margin-bottom: -100px;
         }

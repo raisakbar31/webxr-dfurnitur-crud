@@ -99,3 +99,8 @@ class Landingpage extends CI_Controller
 }
 
 /* End of file Landingpage.php */
+
+
+// login controler
+
+

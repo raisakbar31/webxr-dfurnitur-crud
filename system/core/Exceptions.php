@@ -266,7 +266,7 @@ class CI_Exceptions {
 			ob_end_flush();
 		}
 		ob_start();
-		include($templates_path.$template.'.php');
+		// include($templates_path.$template.'.php');
 		$buffer = ob_get_contents();
 		ob_end_clean();
 		echo $buffer;
