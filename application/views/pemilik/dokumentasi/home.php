@@ -1,14 +1,21 @@
 <?php
-// Ambil kata kunci pencarian
+// Ambil kata kunci pencarian dan pengurutan
 $search = isset($_GET['search']) ? $_GET['search'] : '';
+$sort = isset($_GET['sort']) ? $_GET['sort'] : '';
 
-// Query data dengan filter pencarian
+// Query data dengan filter pencarian dan pengurutan
 if (!empty($search)) {
     $this->db->like('nama_produk', $search);
     // Tambahkan kondisi pencarian berdasarkan kolom lain jika diperlukan
 }
+if ($sort == 'stok_asc') {
+    $this->db->order_by('stok', 'ASC');
+} elseif ($sort == 'stok_desc') {
+    $this->db->order_by('stok', 'DESC');
+}
 $q = $this->db->get('tb_dokumentasi')->result();
 ?>
+
 <div class="card">
     <div class="card-body">
         <div class="card-title d-flex justify-content-between align-items-center">
@@ -21,6 +28,11 @@ $q = $this->db->get('tb_dokumentasi')->result();
                     <button type="submit" class="btn btn-outline-secondary">Cari</button>
                 </div>
             </form>
+        </div>
+
+        <div class="d-flex justify-content-end mb-3">
+            <a href="<?= base_url('pemilik/dokumentasi?sort=stok_asc') ?>" class="btn btn-secondary me-2">Urutkan Stok: Terendah ke Tertinggi</a>
+            <a href="<?= base_url('pemilik/dokumentasi?sort=stok_desc') ?>" class="btn btn-secondary">Urutkan Stok: Tertinggi ke Terendah</a>
         </div>
 
         <div class="table-responsive">
@@ -78,13 +90,12 @@ $q = $this->db->get('tb_dokumentasi')->result();
                     <?php else: ?>
                         <tr>
                             <td colspan="12" class="text-center">Tidak ada data dokumentasi yang tersedia.</td>
-                    </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-
-</div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

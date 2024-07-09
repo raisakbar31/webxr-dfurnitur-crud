@@ -9,11 +9,14 @@ $q = $this->db->get('tb_dokumentasi')->result();
 <div class="card">
     <div class="card-body">
         <div class="card-title d-flex justify-content-between align-items-center">
-            <form action="<?= base_url('pemilik/dokumentasi') ?>" method="GET" class="form-inline mb-3 float-end">
+            <form action="<?= base_url('pemilik/penjualan') ?>" method="GET" class="form-inline mb-3 float-end">
                 <div class="input-group">
-                    <input type="text" name="search" class="form-control" placeholder="Cari...">
+                    <input type="text" name="search" class="form-control" placeholder="Cari..." value="<?= $search ?>">
                     <button type="submit" class="btn btn-outline-secondary">Cari</button>
-                </div>
+                </div><br>
+                <?php if (!empty($search)): ?>
+                    <a href="<?= base_url('pemilik/penjualan') ?>" class="btn btn-outline-primary ms-2">Kembali</a>
+                <?php endif; ?>
             </form>
         </div>
 
