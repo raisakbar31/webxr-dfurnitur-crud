@@ -21,6 +21,9 @@ $q = $this->db->get('tb_dokumentasi')->result();
         <div class="card-title d-flex justify-content-between align-items-center">
             <h2>
                 <a href="<?= base_url('pemilik/dokumentasi/tambah') ?>" class="btn btn-primary">+ Tambah</a>
+                <?php if (!empty($search)): ?>
+                    <a href="<?= base_url('pemilik/dokumentasi') ?>" class="btn btn-outline-primary ms-2">Kembali</a>
+                <?php endif; ?>
             </h2>
             <form action="<?= base_url('pemilik/dokumentasi') ?>" method="GET" class="form-inline mb-3 float-end">
                 <div class="input-group">

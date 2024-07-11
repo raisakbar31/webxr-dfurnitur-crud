@@ -82,6 +82,37 @@ public function undo_update_terjual()
     }
 }
 
+public function edit_kuantitas($id_penjualan, $kuantitas)
+{
+    // Ambil data penjualan berdasarkan id_penjualan
+    $penjualan = $this->db->get_where('tb_riwayatpenjualan', ['id_penjualan' => $id_penjualan])->row_array();
+    if (!$penjualan) {
+        echo json_encode(['status' => 'error', 'message' => 'Data penjualan tidak ditemukan']);
+        return;
+    }
+
+    // Ambil data dokumentasi berdasarkan id_produk dari tb_riwayatpenjualan
+    $id_produk = $penjualan['id_produk'];
+    $dokumentasi = $this->db->get_where('tb_dokumentasi', ['id_produk' => $id_produk])->row_array();
+    if (!$dokumentasi) {
+        echo json_encode(['status' => 'error', 'message' => 'Data dokumentasi tidak ditemukan']);
+        return;
+    }
+
+    // Kurangi stok berdasarkan kuantitas penjualan
+    $stok_lama = $dokumentasi['stok'];
+    $stok_baru = $stok_lama - $kuantitas;
+
+    if ($stok_baru >= 0) {
+        // Update stok di tb_dokumentasi
+        $this->db->where('id_dokumentasi', $dokumentasi['id_dokumentasi']);
+        $this->db->update('tb_dokumentasi', ['stok' => $stok_baru]);
+
+        echo json_encode(['status' => 'success', 'message' => 'Stok berhasil diperbarui']);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Stok tidak mencukupi']);
+    }
+}
 
 
 

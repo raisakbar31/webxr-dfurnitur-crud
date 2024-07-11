@@ -11,6 +11,10 @@
                 <input type="text" class="form-control" id="nama_pelanggan" name="nama_pelanggan" required>
             </div>
             <div class="mb-3">
+                <label for="no_wa" class="form-label">Nomer Whatsapp</label>
+                <input type="number" class="form-control" id="no_wa" name="no_wa" required>
+            </div>
+            <div class="mb-3">
                 <label for="nama_produk" class="form-label">Nama Produk</label>
                 <div class="input-group">
                     <input type="text" id="search_produk" class="form-control" placeholder="Cari Nama Produk">
