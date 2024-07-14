@@ -82,6 +82,8 @@
             </div>
             <div class="modal-body">
                 <table class="table">
+                <h5 style="text-align: center; margin:12px" >Bukti Transaksi</h5>
+                <center>Dfurnitur</center><br>
                     <!-- Elemen lain yang sudah ada -->
                     <tr>
                         <th>ID Penjualan</th>
@@ -95,10 +97,10 @@
                         <th>Nama Produk</th>
                         <td id="nama_produk"></td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th>ID Dokumentasi</th>
                         <td id="id_dokumentasi"></td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th>Alamat Pengiriman</th>
                         <td id="alamat_pengiriman"></td>
@@ -154,7 +156,9 @@
                             <img id="bukti_pembayaran" src="" alt="Bukti Pembayaran" style="max-width: 100%; height: auto;">
                         </td>
                     </tr>
-                </table>
+                </table><br><br>
+                <center><h5>TERIMAKASIH TELAH BERBELANJA DI</h5></center><br>
+                <center><h5>Dfurnitur</h5></center><br>
             </div>
             <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -204,7 +208,7 @@ function showDetail(id_penjualan) {
             $('#id_penjualan').text(data.id_penjualan);
             $('#nama_pelanggan').text(data.nama_pelanggan);
             $('#nama_produk').text(data.nama_produk);
-            $('#id_dokumentasi').text(data.id_dokumentasi);
+            // $('#id_dokumentasi').text(data.id_dokumentasi);
             $('#alamat_pengiriman').text(data.alamat_pengiriman);
             $('#no_wa').text(data.no_wa);
             $('#kuantitas').text(data.kuantitas);

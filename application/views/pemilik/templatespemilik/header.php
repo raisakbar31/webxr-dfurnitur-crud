@@ -69,12 +69,44 @@
                 <span>Dashboard</span>
             </a>
         </li>
+  
+
         <li class="nav-item">
-            <a class="nav-link collapsed" href="<?= base_url('pemilik/dokumentasi') ?>">
+            <a class="nav-link collapsed" data-bs-target="#kategori-nav" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-cart-plus"></i>
+                <span>Data Produk</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="kategori-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                <li>
+                <a class="nav-link collapsed" href="<?= base_url('pemilik/kategori') ?>">
+            <i class="bi bi-cart-plus"></i>
+                <span>Kategori Produk</span>
+            </a>
+                </li>
+                <li>
+                <a class="nav-link collapsed" href="<?= base_url('pemilik/dokumentasi') ?>">
             <i class="bi bi-cart-plus"></i>
                 <span>Produk</span>
             </a>
+                </li>
+            </ul>
         </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#penjualan-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-shop"></i>
@@ -98,6 +130,12 @@
             <a class="nav-link collapsed" href="<?= base_url('pemilik/quote') ?>">
                 <i class="bi bi-chat-quote-fill"></i>
                 <span>Kata Pengunjung</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="<?= base_url('pemilik/laporan') ?>">
+            <i class="bi bi-file-earmark-text-fill"></i>
+                <span>Laporan</span>
             </a>
         </li>
         <li class="nav-item">
