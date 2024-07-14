@@ -4,6 +4,9 @@ $search = isset($_GET['search']) ? $_GET['search'] : '';
 $sort = isset($_GET['sort']) ? $_GET['sort'] : '';
 
 // Query data dengan filter pencarian dan pengurutan
+$this->db->select('tb_dokumentasi.*, tb_kategori_produk.nama_kategori');
+$this->db->from('tb_dokumentasi');
+$this->db->join('tb_kategori_produk', 'tb_dokumentasi.id_kategori = tb_kategori_produk.id_kategori', 'left');
 if (!empty($search)) {
     $this->db->like('nama_produk', $search);
     // Tambahkan kondisi pencarian berdasarkan kolom lain jika diperlukan
@@ -13,7 +16,7 @@ if ($sort == 'stok_asc') {
 } elseif ($sort == 'stok_desc') {
     $this->db->order_by('stok', 'DESC');
 }
-$q = $this->db->get('tb_dokumentasi')->result();
+$q = $this->db->get()->result();
 ?>
 
 <div class="card">
@@ -52,6 +55,7 @@ $q = $this->db->get('tb_dokumentasi')->result();
                         <th scope="col">Dimensi <br>(T x P x L)</th>
                         <th scope="col">Tanggal Upload</th>
                         <th scope="col">Deskripsi</th>
+                        <th scope="col">Kategori</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -84,6 +88,7 @@ $q = $this->db->get('tb_dokumentasi')->result();
                                     echo $short_description . '...'; // Tampilkan deskripsi pendek diikuti elipsis
                                     ?>
                                 </td>
+                                <td><?= $row->nama_kategori ?></td>
                                 <td>
                                     <a href="<?= base_url('pemilik/dokumentasi/edit/') . $row->id_dokumentasi ?>" class="btn btn-primary btn-sm" title="Edit"><i class="bi bi-pencil"></i></a>
                                     <a href="<?= base_url('pemilik/dokumentasi/hapus/') . $row->id_dokumentasi ?>" onclick="return confirm('Yakin hapus data ini?')" class="btn btn-danger btn-sm" title="Hapus"><i class="bi bi-trash"></i></a>

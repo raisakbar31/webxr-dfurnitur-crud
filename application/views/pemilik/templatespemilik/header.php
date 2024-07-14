@@ -133,7 +133,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="<?= base_url('pemilik/laporan') ?>">
+        <a class="nav-link collapsed" href="<?= base_url('pemilik/laporan') ?>">
             <i class="bi bi-file-earmark-text-fill"></i>
                 <span>Laporan</span>
             </a>

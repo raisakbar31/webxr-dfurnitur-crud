@@ -20,6 +20,7 @@ class Dokumentasi extends CI_Controller
 
 public function tambah()
 {
+    // Validasi input
     $this->form_validation->set_rules('nama_produk', 'Nama Produk', 'trim|required');
     $this->form_validation->set_rules('tanggal', 'Tanggal', 'trim|required');
     $this->form_validation->set_rules('harga', 'Harga', 'trim|required|numeric');
@@ -29,14 +30,18 @@ public function tambah()
     $this->form_validation->set_rules('panjang', 'Panjang', 'trim|required|numeric');
     $this->form_validation->set_rules('lebar', 'Lebar', 'trim|required|numeric');
     $this->form_validation->set_rules('bahan', 'Bahan', 'trim|required');
+    $this->form_validation->set_rules('id_kategori', 'Kategori', 'trim|required');
 
     if ($this->form_validation->run() == FALSE) {
+        // Jika validasi gagal, tampilkan kembali form tambah
         $data = array(
             'title' => 'Tambah Produk',
-            'isi' => 'pemilik/dokumentasi/tambah'
+            'isi' => 'pemilik/dokumentasi/tambah',
+            'kategori_produk' => $this->db->get('tb_kategori_produk')->result_array()
         );
         $this->load->view('pemilik/layout', $data, FALSE);
     } else {
+        // Ambil data dari inputan form
         $nama_produk = $this->input->post('nama_produk');
         $tanggal = $this->input->post('tanggal');
         $deskripsi = $this->input->post('deskripsi');
@@ -47,6 +52,7 @@ public function tambah()
         $panjang = $this->input->post('panjang');
         $lebar = $this->input->post('lebar');
         $bahan = $this->input->post('bahan');
+        $id_kategori = $this->input->post('id_kategori');
 
         // Konfigurasi untuk thumbnail
         $config['upload_path'] = 'vendor/dokumentasi';
@@ -64,7 +70,7 @@ public function tambah()
             redirect(base_url('pemilik/dokumentasi/tambah'));
         } else {
             $thumbnail_data = $this->upload->data('file_name');
-            
+
             // Mendapatkan nama file 3D
             $file_d_name = $_FILES['file_d']['name'];
 
@@ -77,7 +83,7 @@ public function tambah()
             } else {
                 $data = array(
                     'thumbnail' => $thumbnail_data,
-                    'file_d' => $file_d_name, // Menyimpan nama file 3D ke dalam database
+                    'file_d' => $file_d_name,
                     'nama_produk' => $nama_produk,
                     'tanggal' => $tanggal,
                     'deskripsi' => $deskripsi,
@@ -88,6 +94,7 @@ public function tambah()
                     'panjang' => $panjang,
                     'lebar' => $lebar,
                     'bahan' => $bahan,
+                    'id_kategori' => $id_kategori
                 );
 
                 $this->db->insert('tb_dokumentasi', $data);
@@ -102,98 +109,112 @@ public function tambah()
 
 
 
+
 // ==========================================
 
 
 public function edit($id)
 {
+    // Ambil data produk berdasarkan $id
+    $q = $this->db->get_where('tb_dokumentasi', ['id_dokumentasi' => $id])->row_array();
+
+    // Ambil data kategori produk untuk dropdown
+    $kategori_produk = $this->db->get('tb_kategori_produk')->result_array();
+
+    // Validasi form
     $this->form_validation->set_rules('nama_produk', 'Nama Produk', 'trim|required');
-    $this->form_validation->set_rules('tanggal', 'Tanggal', 'required');
     $this->form_validation->set_rules('harga', 'Harga', 'trim|required|numeric');
-    $this->form_validation->set_rules('stok', 'Stok', 'trim|required|numeric');
-    $this->form_validation->set_rules('terjual', 'Terjual', 'trim|required|numeric');
     $this->form_validation->set_rules('tinggi', 'Tinggi', 'trim|required|numeric');
     $this->form_validation->set_rules('panjang', 'Panjang', 'trim|required|numeric');
     $this->form_validation->set_rules('lebar', 'Lebar', 'trim|required|numeric');
     $this->form_validation->set_rules('bahan', 'Bahan', 'trim|required');
+    $this->form_validation->set_rules('tanggal', 'Tanggal', 'trim|required');
 
     if ($this->form_validation->run() == FALSE) {
+        // Jika validasi gagal, tampilkan kembali form edit dengan data yang sudah ada
         $data = array(
             'title' => 'Edit Dokumentasi',
             'isi' => 'pemilik/dokumentasi/edit',
-            'id' => $id
+            'q' => $q,
+            'kategori_produk' => $kategori_produk
         );
-
         $this->load->view('pemilik/layout', $data, FALSE);
     } else {
+        // Ambil data dari inputan form
         $nama_produk = $this->input->post('nama_produk');
-        $tanggal = $this->input->post('tanggal');
-        $deskripsi = $this->input->post('deskripsi');
         $harga = $this->input->post('harga');
-        $stok = $this->input->post('stok');
-        $terjual = $this->input->post('terjual');
         $tinggi = $this->input->post('tinggi');
         $panjang = $this->input->post('panjang');
         $lebar = $this->input->post('lebar');
         $bahan = $this->input->post('bahan');
+        $tanggal = $this->input->post('tanggal');
+        $id_kategori = $this->input->post('id_kategori');
 
-        $config['upload_path'] = 'vendor/dokumentasi/';
-        $config['allowed_types'] = '*'; // Mengizinkan semua jenis file
-        $config['max_size']  = '99999999'; // Atur sesuai kebutuhan Anda
+        // Konfigurasi upload thumbnail
+        $config['upload_path'] = 'vendor/dokumentasi';
+        $config['allowed_types'] = 'jpg|png';
+        $config['max_size']  = '99999';
+        $config['max_width']  = '9999';
+        $config['max_height']  = '9999';
         $config['encrypt_name'] = TRUE;
 
         $this->load->library('upload', $config);
 
-        $this->db->where('id_dokumentasi', $id);
-        $existing_data = $this->db->get('tb_dokumentasi')->row_array();
-
-        // Handle thumbnail upload
-        if (!$this->upload->do_upload('thumbnail')) {
-            $thumbnail_data = $existing_data['thumbnail'];
+        // Cek apakah ada file thumbnail yang diupload
+        if ($_FILES['thumbnail']['name']) {
+            if (!$this->upload->do_upload('thumbnail')) {
+                $error = strip_tags($this->upload->display_errors());
+                $this->session->set_flashdata('pesan', "<script>alert('$error')</script>");
+                redirect(base_url('pemilik/dokumentasi/edit/' . $id));
+            } else {
+                $thumbnail_data = $this->upload->data('file_name');
+            }
         } else {
-            $thumbnail_data = $this->upload->data('file_name');
+            $thumbnail_data = $q['thumbnail'];
         }
 
-        // Handle file_d upload
-        if (!$this->upload->do_upload('file_d')) {
-            $file_d_data = $existing_data['file_d'];
+        // Cek apakah ada file asset 3D yang diupload
+        if ($_FILES['file_d']['name']) {
+            // Mendapatkan nama file 3D
+            $file_d_name = $_FILES['file_d']['name'];
+
+            // Path untuk menyimpan file 3D
+            $file_d_path = 'vendor/dokumentasi/' . $file_d_name;
+
+            if (!move_uploaded_file($_FILES['file_d']['tmp_name'], $file_d_path)) {
+                $this->session->set_flashdata('pesan', "<script>alert('Gagal mengunggah file 3D')</script>");
+                redirect(base_url('pemilik/dokumentasi/edit/' . $id));
+            }
         } else {
-            $file_d_data = $this->upload->data('file_name');
+            $file_d_name = $q['file_d'];
         }
 
-        // Calculate the change in terjual and adjust stok accordingly
-        $change_in_terjual = $terjual - $existing_data['terjual'];
-        $new_stok = $existing_data['stok'] - $change_in_terjual;
-
-        if ($new_stok < 0) {
-            $this->session->set_flashdata('pesan', '<script>alert("Stok tidak mencukupi")</script>');
-            redirect(base_url('pemilik/dokumentasi/edit/' . $id));
-        }
-
+        // Data untuk diupdate
         $data = array(
             'thumbnail' => $thumbnail_data,
-            'file_d' => $file_d_data,
+            'file_d' => $file_d_name,
             'nama_produk' => $nama_produk,
-            'tanggal' => $tanggal,
-            'deskripsi' => $deskripsi,
             'harga' => $harga,
-            'stok' => $new_stok,
-            'terjual' => $terjual,
             'tinggi' => $tinggi,
             'panjang' => $panjang,
             'lebar' => $lebar,
             'bahan' => $bahan,
+            'tanggal' => $tanggal,
+            'id_kategori' => $id_kategori
         );
 
+        // Update data di database
         $this->db->where('id_dokumentasi', $id);
-        if ($this->db->update('tb_dokumentasi', $data)) {
-            $this->session->set_flashdata('pesan', '<script>alert("Berhasil update")</script>');
-        } else {
-            $this->session->set_flashdata('pesan', '<script>alert("Gagal update data")</script>');
-        }
+        $this->db->update('tb_dokumentasi', $data);
+
+        // Set flashdata untuk pesan sukses
+        $this->session->set_flashdata('pesan', '<script>alert("Data berhasil diupdate")</script>');
+
+        // Redirect ke halaman dokumentasi
         redirect(base_url('pemilik/dokumentasi'));
     }
 }
+
 
 // ======================update stok dan tombol redo===================
 public function update_stok()

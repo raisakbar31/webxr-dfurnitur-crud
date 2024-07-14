@@ -1,6 +1,3 @@
-<?php
-$q = $this->db->get_where('tb_dokumentasi', ['id_dokumentasi' => $id])->row_array();
-?>
 <section class="section">
     <div class="row">
         <div class="col-lg-12">
@@ -15,7 +12,6 @@ $q = $this->db->get_where('tb_dokumentasi', ['id_dokumentasi' => $id])->row_arra
                         </div>
                     <?php endif; ?>
 
-                    <!-- General Form Elements -->
                     <form method="POST" enctype="multipart/form-data">
                         <div class="row mb-3 mt-3">
                             <label for="thumbnail" class="col-md-4 col-lg-3 col-form-label">Foto saat ini</label>
@@ -50,20 +46,6 @@ $q = $this->db->get_where('tb_dokumentasi', ['id_dokumentasi' => $id])->row_arra
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="stok" class="col-sm-3 col-form-label" >Stok</label>
-                            <div class="col-sm-9">
-                                <input style="background-color: whitesmoke;"  type="text" name="stok" value="<?= $q['stok'] ?>" class="form-control" readonly>
-                                <h6 style="color: red; margin:12px" >*(Hanya bisa di rubah di halaman Awal)</h6>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="terjual" class="col-sm-3 col-form-label">Terjual</label>
-                            <div class="col-sm-9">
-                                <input style="background-color: whitesmoke;" type="text" name="terjual" value="<?= $q['terjual'] ?>" class="form-control" readonly>
-                                <h6 style="color: red; margin:12px" >*(Hanya bisa di rubah di halaman Penjualan)</h6>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
                             <label for="tinggi" class="col-sm-3 col-form-label">Tinggi</label>
                             <div class="col-sm-9">
                                 <input type="text" name="tinggi" value="<?= $q['tinggi'] ?>" class="form-control" >
@@ -94,9 +76,15 @@ $q = $this->db->get_where('tb_dokumentasi', ['id_dokumentasi' => $id])->row_arra
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="deskripsi" class="col-sm-3 col-form-label">Deskripsi Singkat (Opsional)</label>
+                            <label for="id_kategori" class="col-sm-3 col-form-label">Kategori</label>
                             <div class="col-sm-9">
-                                <textarea name="deskripsi" id="deskripsi" cols="30" rows="5" class="form-control"><?= $q['deskripsi'] ?></textarea>
+                                <select name="id_kategori" class="form-control" required>
+                                    <?php foreach ($kategori_produk as $kategori) : ?>
+                                        <option value="<?= $kategori['id_kategori'] ?>" <?= ($kategori['id_kategori'] == $q['id_kategori']) ? 'selected' : '' ?>>
+                                            <?= $kategori['nama_kategori'] ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -108,7 +96,7 @@ $q = $this->db->get_where('tb_dokumentasi', ['id_dokumentasi' => $id])->row_arra
                             <small class="text-danger">Format Foto Produk hanya jpg dan png</small>
                             <small class="text-danger">Format Asset 3D adalah semua tipe file</small>
                         </div>
-                    </form><!-- End General Form Elements -->
+                    </form>
 
                 </div>
             </div>

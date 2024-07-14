@@ -12,6 +12,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nama Kategori</th>
+                        <th scope="col">Jumlah Produk</th>
                         <th scope="col">Deskripsi Kategori</th>
                         <th scope="col">Aksi</th>
                     </tr>
@@ -22,6 +23,14 @@
                             <tr>
                                 <td><?= $no++ ?></td>
                                 <td><?= $row->nama_kategori ?></td>
+                                <td>
+                                    <?php
+                                    // Query untuk menghitung jumlah produk per kategori
+                                    $this->db->where('id_kategori', $row->id_kategori);
+                                    $jumlah_produk = $this->db->count_all_results('tb_dokumentasi');
+                                    echo $jumlah_produk;
+                                    ?>
+                                </td>
                                 <td><?= $row->deskripsi_kategori ?></td>
                                 <td>
                                     <a href="<?= base_url('pemilik/kategori/edit/') . $row->id_kategori ?>" class="btn btn-primary btn-sm" title="Edit"><i class="bi bi-pencil"></i></a>
