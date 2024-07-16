@@ -84,6 +84,12 @@
                 <span>Produk</span>
             </a>
                 </li>
+                <li>
+                <a class="nav-link collapsed" href="<?= base_url('pemilik/diskon') ?>">
+            <i class="bi bi-cart-plus"></i>
+                <span>Diskon User Terdaftar</span>
+            </a>
+                </li>
             </ul>
         </li>
 

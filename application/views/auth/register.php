@@ -75,6 +75,9 @@
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100" type="submit">Register</button>
                                         </div>
+                                        <a href="<?= base_url('admin') ?>"> Sudah Punya Akun?</a>
+                                
+                                        <a href="<?= base_url('') ?>"> Kembali Ke Landing Page</a>
                                     </form>
                                 </div>
                             </div>

@@ -67,7 +67,10 @@
                                         </div>
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100" type="submit">Login</button>
-                                        </div>
+                                        </div><br><br>
+                                        <a href="<?= base_url('register') ?>"> Belum Punya Akun ?</a>
+                                        <a href="<?= base_url('') ?>"> Lupa Kata Sandi ?</a>
+                                        <a href="<?= base_url('') ?>"> Kembali Ke Landing Page</a>
                                     </form>
                                 </div>
                             </div>

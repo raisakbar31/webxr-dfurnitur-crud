@@ -229,43 +229,47 @@
         });
         ?>
 
-        <main id="main">
-            <section id="dokumentasi" class="portfolio">
-                <div class="container">
-                    <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-                        <h2>Produk Yang Kami Sediakan</h2>
-                        <p>Dapatkan pengalaman berbelanja dengan teknologi AR yang kami sediakan</p>
-                    </div>
+<main id="main">
+    <section id="dokumentasi" class="portfolio">
+        <div class="container">
+            <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+                <h2>Produk Yang Kami Sediakan</h2>
+                <p>Dapatkan pengalaman berbelanja dengan teknologi AR yang kami sediakan</p>
+            </div>
 
-                    <div class="portfolio-container" data-aos="fade-up">
-                        <?php foreach ($dokumentasi as $index => $row): ?>
-                            <div class="portfolio-item">
-                                <div class="portfolio-wrap">
-                                    <img src="<?= base_url('vendor/dokumentasi/') . $row->thumbnail ?>" class="img-fluid" alt="">
-                                </div>
-                                <div class="portfolio-info">
-                                    <h4><?= $row->nama_produk ?></h4>
-                                    <strong>Produk Terjual</strong>: <?= $row->terjual; ?> <strong>Unit <i class="fa-solid fa-cart-shopping"></i></strong><br>
-                                    <?php if ($row->stok == 0): ?>
-                                        <strong>Stok</strong>: 0 (Stok Habis) <i class="fa-regular fa-circle-xmark"></i>
-                                    <?php else: ?>
-                                        <strong>Stok</strong>: <?= $row->stok; ?> <strong>Unit <i class="fa-regular fa-circle-check"></i></strong>
-                                    <?php endif; ?>
-                                    <div class="detaillihat">
-                                        <a href="<?= base_url('landingpage/dokumentasi/') . $row->id_dokumentasi ?>#portfolio-details" title="More Details"><i class="fa-solid fa-arrow-up-right-from-square"></i> Lihat Produk</a>
-                                    </div>
-                                </div>
+            <div class="portfolio-container" data-aos="fade-up">
+                <?php foreach ($dokumentasi as $index => $row): ?>
+                    <div class="portfolio-item">
+                        <div class="portfolio-wrap">
+                            <img src="<?= base_url('vendor/dokumentasi/') . $row->thumbnail ?>" class="img-fluid" alt="">
+                        </div>
+                        <div class="portfolio-info">
+                            <h4><?= $row->nama_produk ?></h4>
+                            <strong>Produk Terjual</strong>: <?= $row->terjual; ?> <strong>Unit <i class="fa-solid fa-cart-shopping"></i></strong><br>
+                            <?php if ($row->stok == 0): ?>
+                                <strong>Stok</strong>: 0 (Stok Habis) <i class="fa-regular fa-circle-xmark"></i>
+                            <?php else: ?>
+                                <strong>Stok</strong>: <?= $row->stok; ?> <strong>Unit <i class="fa-regular fa-circle-check"></i></strong>
+                            <?php endif; ?>
+                            <?php if ($row->diskon > 0): ?>
+                                <strong>Diskon</strong>: <?= $row->diskon; ?>%<br>
+                            <?php endif; ?>
+                            <div class="detaillihat">
+                                <a href="<?= base_url('user/dashboard/dokumentasi/') . $row->id_dokumentasi ?>#portfolio-details" title="More Details"><i class="fa-solid fa-arrow-up-right-from-square"></i> Lihat Produk</a>
                             </div>
-                        <?php endforeach; ?>
+                        </div>
                     </div>
-                    <center>
-    <a href="<?php echo base_url("landingpage/allitem"); ?>" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold;">
+                <?php endforeach; ?>
+            </div>
+            <center>
+    <a href="<?php echo base_url("user/dashboard/allitem"); ?>" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold;">
         Lihat Semua Produk Kami
     </a>
 </center>
-                </div>
-            </section>
-        </main>
+        </div>
+    </section>
+</main>
+
 
         <!-- ======= Testimonials Section ======= -->
         <section id="testimonials" class="testimonials">

@@ -42,7 +42,7 @@ class Admin extends CI_Controller
                             redirect(base_url('pemilik/dashboard'));
                             break;
                         case 'user':
-                            redirect(base_url('users/dashboard'));
+                            redirect(base_url('user/dashboard'));
                             break;
                         default:
                             // Jika role tidak dikenali, logout
