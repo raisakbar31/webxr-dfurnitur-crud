@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Login D Furnitur</title>
+    <title>Register D Furnitur</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -49,24 +49,31 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="pt-4 pb-2">
-                                        <h5 class="card-title text-center pb-0 fs-4">Login D Furnitur</h5>
-                                        <p class="text-center small">Masukkan Email dan Password dengan benar.</p>
+                                        <h5 class="card-title text-center pb-0 fs-4">Register D Furnitur</h5>
+                                        <p class="text-center small">Masukkan informasi dengan benar untuk mendaftar.</p>
                                     </div>
-                                    <form class="row g-3 needs-validation" novalidate method="post" action="<?= base_url('admin'); ?>">
+                                    <?= $this->session->flashdata('pesan'); ?>
+                                    <form class="row g-3 needs-validation" novalidate method="post" action="<?= base_url('register'); ?>">
                                         <div class="col-12">
-                                            <label for="yourUsername" class="form-label">Email</label>
-                                            <div class="input-group has-validation">
-                                                <input type="email" name="email" class="form-control" id="yourUsername" required>
-                                                <div class="invalid-feedback">Masukkan Email.</div>
-                                            </div>
+                                            <label for="nama" class="form-label">Nama</label>
+                                            <input type="text" name="nama" class="form-control" id="nama" value="<?= set_value('nama'); ?>" required>
+                                            <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
+                                            <div class="invalid-feedback">Masukkan nama Anda.</div>
                                         </div>
                                         <div class="col-12">
-                                            <label for="yourPassword" class="form-label">Password</label>
-                                            <input type="password" name="password" class="form-control" id="yourPassword" required>
-                                            <div class="invalid-feedback">Masukkan Password.</div>
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" name="email" class="form-control" id="email" value="<?= set_value('email'); ?>" required>
+                                            <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                                            <div class="invalid-feedback">Masukkan email Anda.</div>
                                         </div>
                                         <div class="col-12">
-                                            <button class="btn btn-primary w-100" type="submit">Login</button>
+                                            <label for="password" class="form-label">Password</label>
+                                            <input type="password" name="password" class="form-control" id="password" required>
+                                            <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                                            <div class="invalid-feedback">Masukkan password Anda.</div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-primary w-100" type="submit">Register</button>
                                         </div>
                                     </form>
                                 </div>
@@ -79,7 +86,6 @@
     </main><!-- End #main -->
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    <?= $this->session->flashdata('pesan'); ?>
     <!-- Vendor JS Files -->
     <script src="<?= base_url('vendor/admin/') ?>assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="<?= base_url('vendor/admin/') ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

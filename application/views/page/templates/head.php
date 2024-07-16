@@ -78,12 +78,15 @@
                     <li><a class="nav-link scrollto active" href="#hero">Dashboard </a></li>
                     <li><a class="nav-link scrollto" href="#tentang">Tentang</a></li>
                     <li><a class="nav-link scrollto" href="#dokumentasi">produk</a></li>
-                    <li><a class="nav-link scrollto" href="#katapengunjung">Kata Pengunjung</a></li>
+                    <li><a class="nav-link scrollto" href="#testimonials">Kata Pengunjung</a></li>
                     <!-- <li><a class="nav-link scrollto" href="#team">Team</a></li> -->
-                    <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+                    <li><a class="nav-link scrollto" href="#contact">kontak</a></li>
+                     <li class="dropdown"><a class="nav-link scrollto" href="#">Login <svg style="padding-left: 4px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+</svg></a>
                         <ul>
-                            <li><a href="#">Drop Down 1</a></li>
-                            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                            <li><a target="_blank" href="<?= base_url('admin'); ?>">Masuk</a></li>
+                            <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
                                     <li><a href="#">Deep Drop Down 1</a></li>
                                     <li><a href="#">Deep Drop Down 2</a></li>
@@ -91,13 +94,12 @@
                                     <li><a href="#">Deep Drop Down 4</a></li>
                                     <li><a href="#">Deep Drop Down 5</a></li>
                                 </ul>
-                            </li>
-                            <li><a href="#">Drop Down 2</a></li>
-                            <li><a href="#">Drop Down 3</a></li>
-                            <li><a href="#">Drop Down 4</a></li>
+                            </li> -->
+                            <li><a target="_blank" href="<?= base_url('register'); ?>">Daftar</a></li>
+                            <!-- <li><a href="#">Drop Down 3</a></li>
+                            <li><a href="#">Drop Down 4</a></li> -->
                         </ul>
-                    </li> -->
-                    <li><a class="nav-link scrollto" href="#contact">kontak</a></li>
+                    </li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->

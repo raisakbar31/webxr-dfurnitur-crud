@@ -9,7 +9,7 @@ class Settings extends CI_Controller
     {
         $data = array(
             'title' => 'Settings',
-            'isi' => 'pemilik/settings'
+            'isi' => 'pemilik/settings/settings'
         );
 
         $this->load->view('pemilik/layout', $data, FALSE);

@@ -59,10 +59,15 @@ class Admin extends CI_Controller
             } else {
                 // Jika user tidak ditemukan
                 $this->session->set_flashdata('pesan', '<script>alert("Akun tidak ditemukan")</script>');
-                redirect(base_url('admin'));
+                redirect(base_url('register'));
             }
         }
     }
+
+
+
+
+    
 
     // Fungsi logout
     public function logout()
@@ -70,7 +75,7 @@ class Admin extends CI_Controller
         // Hapus data user dari session
         $this->session->unset_userdata('users');
         // Arahkan ke halaman utama
-        redirect(base_url(''));
+        redirect(base_url('admin'));
     }
 }
 

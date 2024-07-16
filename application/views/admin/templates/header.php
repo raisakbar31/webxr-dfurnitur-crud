@@ -86,6 +86,13 @@
                 <span>Settings</span>
             </a>
         </li>
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="<?= base_url('admin/logout') ?>">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Keluar</span>
+                        </a>
+                    </li>
+
 
     </ul>
 </aside>

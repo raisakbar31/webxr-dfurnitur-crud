@@ -5,7 +5,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Setting Website cok</h5>
+                    <h5 class="card-title">Setting Website</h5>
 
                     <!-- General Form Elements -->
                     <form method="POST" enctype="multipart/form-data" action="<?= base_url('pemilik/settings/edit/') . $setting['id'] ?>">

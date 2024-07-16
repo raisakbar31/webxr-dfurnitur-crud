@@ -20,12 +20,6 @@
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                    <!-- <li>
-                        <a class="dropdown-item d-flex align-items-center" href="<?= base_url('pemilik/profil') ?>">
-                            <i class="bi bi-person"></i>
-                            <span>Profil Saya</span>
-                        </a>
-                    </li> -->
                     <li>
                         <hr class="dropdown-divider">
                     </li>
@@ -42,7 +36,7 @@
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="<?= base_url('admin/logout') ?>">
                             <i class="bi bi-box-arrow-right"></i>
-                            <span>Keluar woy janc</span>
+                            <span>Keluar</span>
                         </a>
                     </li>
 
@@ -93,20 +87,6 @@
             </ul>
         </li>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#penjualan-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-shop"></i>
@@ -126,10 +106,18 @@
                 </li>
             </ul>
         </li>
+
         <li class="nav-item">
             <a class="nav-link collapsed" href="<?= base_url('pemilik/quote') ?>">
                 <i class="bi bi-chat-quote-fill"></i>
                 <span>Kata Pengunjung</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="<?= base_url('pemilik/datauser') ?>">
+            <i class="bi bi-people-fill"></i>
+                <span>Data User</span>
             </a>
         </li>
         <li class="nav-item">
@@ -138,12 +126,44 @@
                 <span>Laporan</span>
             </a>
         </li>
+
         <li class="nav-item">
-            <a class="nav-link collapsed" href="<?= base_url('pemilik/settings') ?>">
-                <i class="bi bi-gear"></i>
-                <span>Settings</span>
+            <a class="nav-link collapsed" data-bs-target="#pengaturan-nav" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-gear"></i>
+                <span>Pengaturan</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
             </a>
+            <ul id="pengaturan-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="<?= base_url('pemilik/profile') ?>">
+                        <i class="bi bi-circle"></i><span>pengaturan Profil</span>
+                    </a>
+                </li>
+                <li>
+                <a class="nav-link collapsed" href="<?= base_url('pemilik/settings') ?>">
+                <i class="bi bi-gear"></i>
+                <span>Pengaturan Website</span>
+            </a>
+                </li>
+
+                <li>
+                        <a class="nav-link collapsed d-flex align-items-center" target="_blank" href="<?= base_url('') ?>">
+                            <i class="bi bi-globe"></i>
+                            <span>Ke Landing Page</span>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+            </ul>
         </li>
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="<?= base_url('admin/logout') ?>">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Keluar</span>
+                        </a>
+                    </li>
 
     </ul>
 </aside>

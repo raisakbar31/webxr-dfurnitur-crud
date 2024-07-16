@@ -7,10 +7,10 @@
 
 <div class="card">
     
-    <div class="card-body">
+<div class="card-body">
         <?php
         // Ambil judul halaman dari tabel tb_settings
-        $judul_halaman = ''; // Isi dengan judul halaman dari tabel tb_settings
+        $judul_halaman = 'Laporan Penjualan'; // Isi dengan judul halaman dari tabel tb_settings
 
         echo '<h2 class="card-title">' . $judul_halaman . '</h2>';
         ?>
@@ -18,7 +18,6 @@
         
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
-                <center><h4>Laporan Penjualan</h4></center><br>
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">#</th>
@@ -32,7 +31,14 @@
                 </thead>
                 <tbody>
                     <?php if (!empty($kategori)): ?>
-                        <?php $no = 1; foreach ($kategori as $row): ?>
+                        <?php 
+                        $no = 1; 
+                        $total_pendapatan_keseluruhan = 0; // Inisialisasi total pendapatan keseluruhan
+
+                        foreach ($kategori as $row): 
+                            // Inisialisasi total pendapatan dari kategori ini
+                            $total_pendapatan_kategori = 0;
+                        ?>
                             <tr>
                                 <td><?= $no++ ?></td>
                                 <td><?= $row->nama_kategori ?></td>
@@ -76,6 +82,12 @@
                                     $this->db->where('tb_dokumentasi.id_kategori', $row->id_kategori);
                                     $total_pendapatan = $this->db->get('tb_riwayatpenjualan')->row()->total_harga;
                                     echo 'Rp ' . number_format($total_pendapatan, 0, ',', '.');
+                                    
+                                    // Tambahkan ke total pendapatan keseluruhan
+                                    $total_pendapatan_keseluruhan += $total_pendapatan;
+                                    
+                                    // Tambahkan ke total pendapatan dari kategori ini
+                                    $total_pendapatan_kategori += $total_pendapatan;
                                     ?>
                                 </td>
                             </tr>
@@ -86,6 +98,12 @@
                         </tr>
                     <?php endif; ?>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6" class="text-end"><strong>Total Pendapatan Keseluruhan:</strong></td>
+                        <td><strong>Rp <?= number_format($total_pendapatan_keseluruhan, 0, ',', '.') ?></strong></td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>
