@@ -255,14 +255,14 @@
                                 <strong>Diskon</strong>: <?= $row->diskon; ?>%<br>
                             <?php endif; ?>
                             <div class="detaillihat">
-                                <a href="<?= base_url('user/dashboard/dokumentasi/') . $row->id_dokumentasi ?>#portfolio-details" title="More Details"><i class="fa-solid fa-arrow-up-right-from-square"></i> Lihat Produk</a>
+                                <a href="<?= base_url('dashboard/dokumentasi/') . $row->id_dokumentasi ?>#portfolio-details" title="More Details"><i class="fa-solid fa-arrow-up-right-from-square"></i> Lihat Produk</a>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
             <center>
-    <a href="<?php echo base_url("user/dashboard/allitem"); ?>" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold;">
+    <a href="<?php echo base_url("dashboard/allitem"); ?>" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold;">
         Lihat Semua Produk Kami
     </a>
 </center>

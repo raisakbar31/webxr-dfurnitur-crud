@@ -21,6 +21,24 @@ $query = $this->db->get('tb_settings');
 $settings = $query->row();
 $phone_number = $settings->phone;
 ?>
+<style>
+    .ar-button{
+    background-color: red;
+    padding: 12px 24px;
+    
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
+.ar-button:hover{
+    background-color: rgb(245, 0, 0);
+    padding: 12px 24px;
+    
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
+</style>
 
 <main id="main">
 

@@ -244,7 +244,7 @@
                                 <strong>Diskon</strong>: <?= $row->diskon; ?>%<br><br>
                             <?php endif; ?>
                                     <div class="detaillihat">
-                                        <a href="<?= base_url('user/dashboard/dokumentasi/') . $row->id_dokumentasi ?>#portfolio-details" title="More Details">Detail</a>
+                                        <a href="<?= base_url('dashboard/dokumentasi/') . $row->id_dokumentasi ?>#portfolio-details" title="More Details">Detail</a>
                                         <a href="<?= base_url('vendor/dokumentasi/') . $row->thumbnail ?>" data-gallery="portfolioGallery" class="portfolio-lightbox" title="<?= $row->nama_pengunjung ?>">Lihat</a>
                                     </div>
                                 </div>
@@ -283,7 +283,7 @@
                                 <strong>Diskon</strong>: <?= $row->diskon; ?>%<br> <br>
                             <?php endif; ?>
                                     <div class="detaillihat">
-                                        <a href="<?= base_url('user/dashboard/dokumentasi/') . $row->id_dokumentasi ?>#portfolio-details" title="Detail Produk">Detail</a>
+                                        <a href="<?= base_url('dashboard/dokumentasi/') . $row->id_dokumentasi ?>#portfolio-details" title="Detail Produk">Detail</a>
                                         <a href="<?= base_url('vendor/dokumentasi/') . $row->thumbnail ?>" data-gallery="portfolioGallery" class="portfolio-lightbox" title="<?= $row->nama_pengunjung ?>">Lihat</a>
                                     </div>
                                 </div>

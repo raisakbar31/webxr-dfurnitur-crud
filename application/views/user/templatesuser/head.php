@@ -70,7 +70,7 @@
         <div class="container d-flex align-items-center justify-content-between">
 
             <div class="logo">
-                <h1 class="text-light"><a href="<?= base_url('user/dashboard'); ?>"><span><?= $settings['judul_halaman'] ?></span></a></h1>
+                <h1 class="text-light"><a href="<?= base_url('dashboard'); ?>"><span><?= $settings['judul_halaman'] ?></span></a></h1>
             </div>
 
             <nav id="navbar" class="navbar">
@@ -81,26 +81,38 @@
                     <li><a class="nav-link scrollto" href="#testimonials">Kata Pengunjung</a></li>
                     <!-- <li><a class="nav-link scrollto" href="#team">Team</a></li> -->
                     <li><a class="nav-link scrollto" href="#contact">kontak</a></li>
-                     <li class="dropdown"><a class="nav-link scrollto" href="#"><?= $user['nama'] ?> <svg style="padding-left: 4px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
-  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
-</svg></a>
-                        <ul>
-                            <li><a href="<?= base_url('admin/logout'); ?>">Keluar</a></li>
-                            <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                                <ul>
-                                    <li><a href="#">Deep Drop Down 1</a></li>
-                                    <li><a href="#">Deep Drop Down 2</a></li>
-                                    <li><a href="#">Deep Drop Down 3</a></li>
-                                    <li><a href="#">Deep Drop Down 4</a></li>
-                                    <li><a href="#">Deep Drop Down 5</a></li>
-                                </ul>
-                            </li> -->
-                            <li><a target="_blank" href="<?= base_url('register'); ?>">Profil</a></li>
-                            <li><a target="_blank" href="<?= base_url('Status'); ?>">Status Orderan</a></li>
-                            <!-- <li><a href="#">Drop Down 3</a></li>
-                            <li><a href="#">Drop Down 4</a></li> -->
-                        </ul>
-                    </li>
+                    <ul class="navbar-nav flex-row">
+      <li class="nav-item me-3 me-lg-1 dropdown">
+        <a
+          class="nav-link dropdown-toggle d-sm-flex align-items-sm-center"
+          href="#"
+          id="navbarDropdownUser"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <img
+            src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
+            class="rounded-circle"
+            height="22"
+            alt="User Avatar"
+            loading="lazy"
+          />
+          <strong class="d-none d-sm-block ms-1"><?= $user['nama'] ?></strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownUser">
+          <li>
+            <a class="dropdown-item" href="<?= base_url('admin/logout'); ?>">Keluar</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="<?= base_url('user/dashboard'); ?>">Profil</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="<?= base_url('user/Status'); ?>">Status Orderan</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
                      </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -114,6 +126,7 @@
             <h1><?= $settings['text_sambutan']; ?></h1>
             <h2><?= $settings['desc_sambutan'] ?></h2>
             <!-- <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a> -->
-                <a href="<?= base_url('user/dashboard/allitem'); ?>" class=" animate__animated animate__headShake animate__infinite	infinite tombolmariberbelanja" href="<?= base_url('landingpage/allitem'); ?>">Mari Berbelanja Dengan Fitur AR  <i class="fa-solid fa-vr-cardboard"></i></a>
-        </div>
+                <a href="<?= base_url('dashboard/allitem'); ?>" class=" animate__animated animate__headShake animate__infinite	infinite tombolmariberbelanja" href="<?= base_url('landingpage/allitem'); ?>">Mari Berbelanja Dengan Fitur AR  <i class="fa-solid fa-vr-cardboard"></i></a>
+                <br><br> <h2>selamat datang <?= $user['nama'] ?> dan selamat menikmati diskon sampai dengan 50% </h2> <br>
+            </div>
     </section><!-- End Hero -->

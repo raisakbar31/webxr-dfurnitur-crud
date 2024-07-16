@@ -21,7 +21,26 @@ $query = $this->db->get('tb_settings');
 $settings = $query->row();
 $phone_number = $settings->phone;
 ?>
+<style>
+.ar-button{
+    background-color: red;
+    padding: 12px 24px;
+    
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
+.ar-button:hover{
+    background-color: rgb(245, 0, 0);
+    padding: 12px 24px;
+    
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
 
+
+</style>
 <main id="main">
 
     <!-- ======= Breadcrumbs Section ======= -->
@@ -86,7 +105,7 @@ $phone_number = $settings->phone;
                         <h2><strong>Fitur AR <i class="fa-solid fa-vr-cardboard"></i></strong></h2><br>
                        
                         <div class="card-footer">
-                            <button class="ar-button" onclick="window.app.showChair('<?= $dokumentasi['file_d'] ?>');">Lihat AR <i class="fas fa-camera"></i></button>
+                        <button class="ar-button" onclick="window.app.showChair('<?= $dokumentasi['file_d'] ?>');">Lihat AR <i class="fas fa-camera"></i></button>
                         </div>
 
                         <br>
