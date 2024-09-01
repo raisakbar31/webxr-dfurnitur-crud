@@ -27,8 +27,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `tb_diskon`
 --
 
-CREATE TABLE `tb_diskon` (
-  `id_diskon` int(11) NOT NULL,
+CREATE TABLE `tbdiskon` (
+  `iddiskon` int(11) NOT NULL,
   `jumlah_diskon` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -38,8 +38,8 @@ CREATE TABLE `tb_diskon` (
 -- Table structure for table `tb_dokumentasi`
 --
 
-CREATE TABLE `tb_dokumentasi` (
-  `id_dokumentasi` int(11) NOT NULL,
+CREATE TABLE `tbdokumentasi` (
+  `iddokumentasi` int(11) NOT NULL,
   `thumbnail` varchar(255) NOT NULL,
   `file_d` text NOT NULL,
   `nama_produk` varchar(255) NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE `tb_kategori_produk` (
 -- Dumping data for table `tb_kategori_produk`
 --
 
-INSERT INTO `tb_kategori_produk` (`id_kategori`, `nama_kategori`, `deskripsi_kategori`) VALUES
+INSERT INTO `tbkategoriproduk` (`id_kategori`, `nama_kategori`, `deskripsi_kategori`) VALUES
 (2, 'Lemari', 'all type lemari edit'),
 (3, 'Kursi', 'all type kursi');
 
@@ -97,7 +97,7 @@ INSERT INTO `tb_kategori_produk` (`id_kategori`, `nama_kategori`, `deskripsi_kat
 -- Table structure for table `tb_quote`
 --
 
-CREATE TABLE `tb_quote` (
+CREATE TABLE `tbquote` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `pekerjaan` varchar(255) NOT NULL,
