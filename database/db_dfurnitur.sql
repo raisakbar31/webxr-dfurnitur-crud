@@ -20,21 +20,14 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_dfurnitur`
 --
-
+7
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `tb_dokumentasi`
 --
 
-CREATE TABLE `tb_dokumentasi` (
-  `id_dokumentasi` int(11) NOT NULL,
-  `thumbnail` varchar(255) NOT NULL,
-  `file_d` text NOT NULL,
-  `nama_produk` varchar(255) NOT NULL,
-  `terjual` varchar(255) NOT NULL,
-  `tinggi` varchar(11) NOT NULL,
-  `panjang` varchar(11) NOT NULL,
+
   `lebar` varchar(11) NOT NULL,
   `bahan` varchar(255) NOT NULL,
   `stok` varchar(255) NOT NULL,
@@ -42,7 +35,7 @@ CREATE TABLE `tb_dokumentasi` (
   `tanggal` date NOT NULL,
   `deskripsi` varchar(255) NOT NULL,
   `views` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_dokumentasi`
@@ -109,14 +102,6 @@ INSERT INTO `tb_settings` (`id`, `judul_halaman`, `text_sambutan`, `desc_sambuta
 --
 -- Table structure for table `tb_users`
 --
-
-CREATE TABLE `tb_users` (
-  `id_users` int(11) NOT NULL,
-  `nama` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `role` enum('0','1') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_users`
